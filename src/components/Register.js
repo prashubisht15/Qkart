@@ -3,7 +3,6 @@ import { Box } from "@mui/system";
 import axios from "axios";
 import { useSnackbar } from "notistack";
 import React, { useState } from "react";
-import { formatDiagnostic } from "typescript";
 import { config } from "../App";
 import Footer from "./Footer";
 import Header from "./Header";
@@ -26,10 +25,12 @@ const Register = () => {
 
     setFormData({
       ...formdata,
-      [name]: value
+      [name] : value
     })
   }
-
+  
+  const history = useHistory();
+  
 
   // TODO: CRIO_TASK_MODULE_REGISTER - Implement the register function
   /**
@@ -70,7 +71,7 @@ const Register = () => {
           );
           setLoader(false)
           enqueueSnackbar("Registered successfully", { variant: "success" })
-            
+          history.push("/login" ,{from: "Register"})
         }
       }
       catch(err){
@@ -188,20 +189,22 @@ const Register = () => {
             </Button>
           ) : (
             <Box display="flex" justifyContent="center">
+              
               <CircularProgress />
             </Box>
+            
           )}
           <p className="secondary-action">
             Already have an account?{" "}
-            <a className="link" href="#">
+            <Link className="link" to="/login">
               Login here
-            </a>
+            </Link>
           </p>
         </Stack>
       </Box>
       <Footer />
     </Box>
   );
-  };
+};
 
 export default Register;
