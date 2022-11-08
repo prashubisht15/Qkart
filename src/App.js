@@ -7,7 +7,7 @@ import Checkout from "./components/Checkout";
 import Thanks from "./components/Thanks";
 
 export const config = {
-  endpoint: `http://${ipConfig.workspaceIp}:8082/api/v1`,
+  endpoint: `http://prashant-qcartfrontend-v2.herokuapp.com:8082/api/v1`,
 };
 
 function App() {
